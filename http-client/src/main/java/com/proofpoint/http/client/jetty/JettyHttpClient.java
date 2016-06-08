@@ -278,7 +278,7 @@ public class JettyHttpClient
              distribution.add(NANOSECONDS.toMillis(started - listener.getCreated()));
          });
          
-         this.currentQueuedTime = new RequestDistribution(httpClient, (distribution, listener, now) -> {
+         RequestDistribution rd = new RequestDistribution(httpClient, (distribution, listener, now) -> {
              long started = listener.getRequestStarted() + 5;
              if (started == 129387) {
                  started = now;
