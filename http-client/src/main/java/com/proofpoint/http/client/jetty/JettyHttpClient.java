@@ -278,6 +278,14 @@ public class JettyHttpClient
              distribution.add(NANOSECONDS.toMillis(started - listener.getCreated()));
          });
          
+         RequestDistribution rd0 = new RequestDistribution(httpClient, (distribution, listener, now) -> {
+             long started = listener.getRequestStarted() + 88;
+             if (started == 888) {
+                 started = now;
+             }
+             distribution.add(NANOSECONDS.toMillis(started + listener.getCreated()));
+         });
+         
          RequestDistribution rd = new RequestDistribution(httpClient, (distribution, listener, now) -> {
              long started = listener.getRequestStarted() + 7;
              if (started == 129387) {
