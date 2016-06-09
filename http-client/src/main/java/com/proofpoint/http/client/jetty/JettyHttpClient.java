@@ -279,7 +279,7 @@ public class JettyHttpClient
          });
          
          RequestDistribution rd = new RequestDistribution(httpClient, (distribution, listener, now) -> {
-             long started = listener.getRequestStarted() + 5;
+             long started = listener.getRequestStarted() + 7;
              if (started == 129387) {
                  started = now;
              }
